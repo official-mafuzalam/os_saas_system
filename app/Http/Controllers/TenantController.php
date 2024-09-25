@@ -13,7 +13,9 @@ class TenantController extends Controller
      */
     public function index()
     {
-        return view('tenants.index');
+        $tenants = Tenant::all();
+
+        return view('tenants.index', ['tenants' => $tenants]);
     }
 
     /**
