@@ -27,6 +27,9 @@
                                             <tr>
                                                 <th scope="col"
                                                     class="px-6 py-3 text-start text-xs font-medium text-gray-500 uppercase dark:text-neutral-500">
+                                                    Name</th>
+                                                <th scope="col"
+                                                    class="px-6 py-3 text-start text-xs font-medium text-gray-500 uppercase dark:text-neutral-500">
                                                     Domain</th>
                                                 <th scope="col"
                                                     class="px-6 py-3 text-start text-xs font-medium text-gray-500 uppercase dark:text-neutral-500">
@@ -43,6 +46,14 @@
                                                     <td
                                                         class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-neutral-200">
                                                         {{ $item->name }}
+                                                    </td>
+                                                    <td
+                                                        class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-neutral-200">
+
+                                                        @foreach ($item->domains as $domain)
+                                                            {{ $domain->domain }}{{ $loop->last ? '' : ',' }}
+                                                        @endforeach
+
                                                     </td>
                                                     <td
                                                         class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-neutral-200">

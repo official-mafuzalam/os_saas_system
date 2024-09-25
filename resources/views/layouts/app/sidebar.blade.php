@@ -25,7 +25,7 @@
             </li>
             <li>
                 <a class="flex items-center gap-x-3.5 py-2 px-2.5 text-sm text-slate-700 rounded-md hover:bg-gray-100 dark:bg-gray-900 dark:text-white"
-                    href="{{ route('tenants.index') }}">
+                    href="">
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                         class="bi bi-bar-chart-line" viewBox="0 0 16 16">
                         <path
@@ -127,7 +127,7 @@
                         </li>
                         <li>
                             <a class="flex items-center gap-x-3.5 py-2 px-2.5 text-sm text-slate-700 rounded-md hover:bg-gray-100 dark:bg-gray-800 dark:text-slate-400 dark:hover:text-slate-300"
-                                href="#">
+                                href="{{ route('tenant.user') }}">
                                 Users
                             </a>
                         </li>

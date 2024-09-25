@@ -1,21 +1,25 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\app;
 
-use App\Models\Tenant;
-use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 use Illuminate\Validation\Rules;
+use Illuminate\Http\Request;
+use App\Models\{
+    Tenant,
+    User
+};
 
-class TenantController extends Controller
+class UserController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $tenants = Tenant::with('domains')->get();
+        $users = User::get();
 
-        return view('admin.tenants.index', ['tenants' => $tenants]);
+        return view('app.user.index', ['users' => $users]);
     }
 
     /**
@@ -23,7 +27,7 @@ class TenantController extends Controller
      */
     public function create()
     {
-        return view('admin.tenants.create');
+        return view('app.user.create');
     }
 
     /**
@@ -35,18 +39,14 @@ class TenantController extends Controller
         $validatedData = $request->validate([
             'name' => 'required|string|max:255',
             'email' => 'required|email|max:255',
-            'domain_name' => 'required|string|max:255|unique:domains,domain',
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
         ]);
 
 
-        $tenant = Tenant::create($validatedData);
+        User::create($validatedData);
 
-        $tenant->domains()->create([
-            'domain' => $validatedData['domain_name'] . '.' . config('app.domain')
-        ]);
 
-        return redirect()->route('tenants.index');
+        return redirect()->route('tenant.user');
 
     }
 
