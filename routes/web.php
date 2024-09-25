@@ -16,29 +16,31 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return to_route('login');
+    return to_route('admin.dashboard');
 });
 Route::middleware(['auth', 'verified'])->prefix('dashboard')->group(function () {
 
     // Dashboard route
     Route::get('/', function () {
         return view('admin.index');
-    })->name('dashboard');  
+    })->name('admin.dashboard');
 
     // Tenant resource routes
     Route::resource('/tenants', TenantController::class);
+
+    Route::middleware('auth')->group(function () {
+
+        Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+
+        Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+
+        Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+
+    });
 });
 
 
 
-Route::middleware('auth')->group(function () {
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
-
-
-
-});
 
 require __DIR__ . '/auth.php';

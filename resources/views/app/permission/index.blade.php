@@ -19,10 +19,10 @@
                                         class="px-6 py-4 grid gap-3 md:flex md:justify-between md:items-center border-b border-gray-200 dark:border-gray-700">
                                         <div>
                                             <h2 class="text-xl font-semibold text-gray-800 dark:text-gray-200">
-                                                User
+                                                Permissions
                                             </h2>
                                             <p class="text-sm text-gray-600 dark:text-gray-400">
-                                                Add User, edit and more.
+                                                Add Permissions, edit and more.
                                             </p>
                                         </div>
 
@@ -34,7 +34,7 @@
                                                 </a>
 
                                                 <a class="py-2 px-3 inline-flex justify-center items-center gap-2 rounded-md border border-transparent font-semibold bg-blue-500 text-white hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-all text-sm dark:focus:ring-offset-gray-800"
-                                                    href="{{ route('tenant.user.createPage') }}">
+                                                    href="{{ route('tenant.permission.createPage') }}">
                                                     <svg class="w-3 h-3" xmlns="http://www.w3.org/2000/svg"
                                                         width="16" height="16" viewBox="0 0 16 16"
                                                         fill="none">
@@ -61,14 +61,6 @@
                                                         </span>
                                                     </div>
                                                 </th>
-                                                <th scope="col" class="pl-6 lg:pl-3 xl:pl-6 pr-6 py-3 text-left">
-                                                    <div class="flex items-center gap-x-2 ">
-                                                        <span
-                                                            class="text-xs font-semibold uppercase tracking-wide text-gray-800 dark:text-gray-200">
-                                                            Email
-                                                        </span>
-                                                    </div>
-                                                </th>
 
                                                 <th scope="col" class="pl-6 lg:pl-3 xl:pl-6 pr-6 py-3 text-left">
                                                     <div class="flex items-center gap-x-2 ">
@@ -83,25 +75,19 @@
 
                                         <tbody class="divide-y divide-gray-200 dark:divide-gray-700">
 
-                                            @foreach ($users as $user)
+                                            @foreach ($permission as $item)
                                                 <tr>
                                                     <td class="h-px w-72 whitespace-nowrap">
                                                         <div class="px-6 py-3">
                                                             <span
-                                                                class="block text-sm font-semibold text-gray-800 dark:text-gray-200">{{ $user->name }}</span>
-                                                        </div>
-                                                    </td>
-                                                    <td class="h-px w-72 whitespace-nowrap">
-                                                        <div class="px-6 py-3">
-                                                            <span
-                                                                class="block text-sm font-semibold text-gray-800 dark:text-gray-200">{{ $user->email }}</span>
+                                                                class="block text-sm font-semibold text-gray-800 dark:text-gray-200">{{ $item->name }}</span>
                                                         </div>
                                                     </td>
                                                     <td class="h-px w-px whitespace-nowrap">
                                                         <div class="px-6 py-1.5">
                                                             <a class="inline-flex items-center gap-x-1.5 text-sm text-blue-600 decoration-2 hover:underline font-medium"
-                                                                href="{{ route('tenant.users.show', $user->id) }}">
-                                                                Role
+                                                                href="{{ route('tenant.permission.edit', ['id' => $item->id]) }}">
+                                                                Edit
                                                             </a>
                                                         </div>
                                                         <div class="px-6 py-1.5">
@@ -160,5 +146,7 @@
                     <!-- End Card -->
                 </div>
                 <!-- End Table Section -->
+            </div>
+        </div>
     </x-slot>
-</x-admin-layout>
+</x-app-layout>

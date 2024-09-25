@@ -58,7 +58,7 @@
                         @if ($user->roles)
                             @foreach ($user->roles as $user_role)
                                 <form class="px-4 py-2 bg-red-500 hover:bg-red-700 text-white rounded-md" method="POST"
-                                    action="{{ route('admin.users.roles.remove', [$user->id, $user_role->id]) }}"
+                                    action="{{ route('tenant.users.roles.remove', [$user->id, $user_role->id]) }}"
                                     onsubmit="return confirm('Are you sure?');">
                                     @csrf
                                     @method('DELETE')
@@ -67,7 +67,7 @@
                             @endforeach
                         @endif
                     </div>
-                    <form method="POST" action="{{ route('admin.users.roles', $user->id) }}">
+                    <form method="POST" action="{{ route('tenant.users.roles', $user->id) }}">
                         @csrf
 
                         <div class="grid sm:grid-cols-12 gap-2 sm:gap-6">
@@ -115,7 +115,7 @@
                         @if ($user->permissions)
                             @foreach ($user->permissions as $user_permission)
                                 <form class="px-4 py-2 bg-red-500 hover:bg-red-700 text-white rounded-md" method="POST"
-                                    action="{{ route('admin.users.permissions.revoke', [$user->id, $user_permission->id]) }}"
+                                    action="{{ route('tenant.users.permissions.revoke', [$user->id, $user_permission->id]) }}"
                                     onsubmit="return confirm('Are you sure?');">
                                     @csrf
                                     @method('DELETE')
@@ -124,7 +124,7 @@
                             @endforeach
                         @endif
                     </div>
-                    <form method="POST" action="{{ route('admin.users.permissions', $user->id) }}">
+                    <form method="POST" action="{{ route('tenant.users.permissions', $user->id) }}">
                         @csrf
 
                         <div class="grid sm:grid-cols-12 gap-2 sm:gap-6">
