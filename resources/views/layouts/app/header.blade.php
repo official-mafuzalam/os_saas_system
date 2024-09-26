@@ -7,7 +7,13 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta name="robots" content="noindex, nofollow"> <!-- Prevents indexing and following -->
 
-    <title>{{ config('app.name', 'Octosync Software Ltd') }}</title>
+    <title>
+        @if (isset($header))
+            {{ $header }}
+        @else
+            {{ config('app.name', 'Octosync Software Ltd') }}
+        @endif
+    </title>
 
     <!-- Fonts -->
     {{-- <link rel="preconnect" href="https://fonts.bunny.net">
@@ -30,11 +36,15 @@
     <header
         class="sticky top-0 inset-x-0 flex flex-wrap sm:justify-start sm:flex-nowrap z-[48] w-full bg-white border-b text-sm py-2.5 sm:py-4 lg:pl-64 dark:bg-gray-800 dark:border-gray-700">
         <nav class="flex basis-full items-center w-full mx-auto px-4 sm:px-6 md:px-8" aria-label="Global">
-            <div class="mr-5 lg:mr-0 lg:hidden">
-                <a class="flex-none text-xl font-semibold dark:text-white" href="#"
-                    aria-label="{{ config('app.name', 'Octosync Software Ltd') }}">{{ config('app.name', 'Octosync Software Ltd') }}</a>
-            </div>
 
+            <div class="mr-5 lg:mr-0 lg:hidden">
+                <a class="flex-none text-xl font-semibold dark:text-white" href="{{ route('tenant.dashboard') }}"
+                    aria-label="@if (isset($header)) {{ $header }} @endif">
+                    @if (isset($header))
+                        {{ $header }}
+                    @endif
+                </a>
+            </div>
             <div class="w-full flex items-center justify-end ml-auto sm:justify-between sm:gap-x-3 sm:order-3">
                 {{-- <div class="sm:hidden">
                     <button type="button"
@@ -48,10 +58,7 @@
                 </div> --}}
 
                 <div class="">
-                    <!-- Page Heading -->
-                    @if (isset($header))
-                        {{ $header }}
-                    @endif
+
                 </div>
 
 

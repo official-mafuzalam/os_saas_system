@@ -2,6 +2,7 @@
 
 declare(strict_types=1);
 
+use App\Http\Controllers\app\HomeController;
 use App\Http\Controllers\app\PermissionController;
 use App\Http\Controllers\app\ProfileController;
 use App\Http\Controllers\app\RoleController;
@@ -34,12 +35,10 @@ Route::middleware([
 
 
 
-    Route::middleware('auth')->group(function () {
+    Route::middleware('auth')->prefix('/dashboard')->group(function () {
 
         // Dashboard route
-        Route::get('/dashboard', function () {
-            return view('app.index');
-        })->name('tenant.dashboard');
+        Route::get('/', [HomeController::class,'index'])->name('tenant.dashboard');
 
 
 

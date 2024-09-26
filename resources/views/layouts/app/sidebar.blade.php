@@ -4,9 +4,11 @@
 
 
     <div class="px-6">
-        <a class="flex-none text-xl font-semibold dark:text-white" href="#"
-            aria-label="{{ config('app.name', 'Octosync Software Ltd') }}">
-            {{ config('app.name', 'Octosync Software Ltd') }}
+        <a class="flex-none text-xl font-semibold dark:text-white" href="{{ route('tenant.dashboard') }}"
+            aria-label="@if (isset($header)) {{ $header }} @endif">
+            @if (isset($header))
+                {{ $header }}
+            @endif
         </a>
     </div>
 

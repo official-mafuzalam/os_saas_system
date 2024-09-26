@@ -115,19 +115,19 @@
                     <ul class="pt-2 pl-2">
                         <li>
                             <a class="flex items-center gap-x-3.5 py-2 px-2.5 text-sm text-slate-700 rounded-md hover:bg-gray-100 dark:bg-gray-800 dark:text-slate-400 dark:hover:text-slate-300"
-                                href="#">
+                                href="{{ route('admin.role') }}">
                                 Roles
                             </a>
                         </li>
                         <li>
                             <a class="flex items-center gap-x-3.5 py-2 px-2.5 text-sm text-slate-700 rounded-md hover:bg-gray-100 dark:bg-gray-800 dark:text-slate-400 dark:hover:text-slate-300"
-                                href="#">
+                                href="{{ route('admin.permission') }}">
                                 Permissions
                             </a>
                         </li>
                         <li>
                             <a class="flex items-center gap-x-3.5 py-2 px-2.5 text-sm text-slate-700 rounded-md hover:bg-gray-100 dark:bg-gray-800 dark:text-slate-400 dark:hover:text-slate-300"
-                                href="#">
+                                href="{{ route('admin.user') }}">
                                 Users
                             </a>
                         </li>

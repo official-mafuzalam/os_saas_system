@@ -1,12 +1,12 @@
 <x-app-layout>
-    <x-slot name="mian">
+    <x-slot name="header">
+        {{ $com_name }}
+    </x-slot>
+    <x-slot name="main">
 
+        <div class="w-full sm:pt-5 px-1 sm:px-6 md:px-8">
 
-        <!-- Content -->
-        <div class="w-full lg:ps-64">
-            <div class="p-4 sm:p-6 space-y-4 sm:space-y-6">
-
-                
+            <div class="bg-slate-300 rounded-xl shadow dark:bg-slate-800">
 
 
 
